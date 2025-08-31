@@ -1,0 +1,16 @@
+name: CI (dao scaffold)
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+jobs:
+  scaffold-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify required docs exist
+        run: |
+          test -f docs/ROADMAP.md
+          test -f docs/GOVERNANCE-MODEL.md
+          test -f docs/PROPOSAL-TEMPLATE.md
+          test -f README.md
